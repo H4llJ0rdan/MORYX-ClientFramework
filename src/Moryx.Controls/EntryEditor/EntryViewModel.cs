@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Threading;
 using Moryx.Serialization;
 using Moryx.Tools;
 
@@ -76,7 +77,11 @@ namespace Moryx.Controls
                 if (Entry.Value.Current is not null && Entry.Value.Current.Equals(value))
                     return;
                 Entry.Value.Current = value;
-                OnPropertyChanged();
+                Dispatcher.CurrentDispatcher.Invoke(() =>
+                {
+                    OnPropertyChanged();
+                    // Assuming you're inside an EntryViewModel instance
+                });
             }
         }
 
@@ -105,7 +110,11 @@ namespace Moryx.Controls
                     _subEntries.CollectionChanged -= SyncSubEntries;
                 _subEntries = value;
                 _subEntries.CollectionChanged += SyncSubEntries;
-                OnPropertyChanged();
+                Dispatcher.CurrentDispatcher.Invoke(() =>
+                {
+                    OnPropertyChanged();
+                    // Assuming you're inside an EntryViewModel instance
+                });
             }
         }
 
