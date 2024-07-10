@@ -80,7 +80,6 @@ namespace Moryx.Controls
                 Dispatcher.CurrentDispatcher.Invoke(() =>
                 {
                     OnPropertyChanged();
-                    // Assuming you're inside an EntryViewModel instance
                 });
             }
         }
@@ -113,7 +112,6 @@ namespace Moryx.Controls
                 Dispatcher.CurrentDispatcher.Invoke(() =>
                 {
                     OnPropertyChanged();
-                    // Assuming you're inside an EntryViewModel instance
                 });
             }
         }
